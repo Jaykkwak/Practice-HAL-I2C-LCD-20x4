@@ -100,17 +100,10 @@ int main(void)
 
   lcd_init();
 
-   lcd_send_cmd (0x80|0x00);
-   lcd_send_string("HELLO WORLD");
+  lcd_send_string("Hello World");
 
-   lcd_send_cmd (0x80|0x40);
-   lcd_send_string("LCD 20x4 DEMO");
 
-   lcd_send_cmd (0x80|0x1C);
-   lcd_send_string("BY");
 
-   lcd_send_cmd (0x80|0x54);
-     lcd_send_string("ControllersTech");
 
   /* USER CODE END 2 */
 
@@ -121,17 +114,20 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
- 	  for (int i=0; i<5; i++)
- 	  {
- 		  lcd_send_cmd (0x1C);  // display shift right
- 		  HAL_Delay(350);
- 	  }
+	   /* USER CODE END WHILE */
 
- 	  for (int i=0; i<5; i++)
- 	  {
- 		  lcd_send_cmd (0x18);  // display shift left
- 		  HAL_Delay(350);
- 	  }
+	    /* USER CODE BEGIN 3 */
+//		  for (int i=0; i<5; i++)
+//		  {
+//			  lcd_send_cmd (0x1C);  // display shift right
+//			  HAL_Delay(350);
+//		  }
+//
+//		  for (int i=0; i<5; i++)
+//		  {
+//			  lcd_send_cmd (0x18);  // display shift left
+//			  HAL_Delay(350);
+//		  }
    }
   /* USER CODE END 3 */
 }

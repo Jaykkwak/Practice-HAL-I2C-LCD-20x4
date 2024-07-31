@@ -6,6 +6,8 @@ extern I2C_HandleTypeDef hi2c3;;  // change your handler here accordingly
 
 #define SLAVE_ADDRESS_LCD 0x4E // change this according to ur setup
 
+
+//RS"0" - command mode
 void lcd_send_cmd (char cmd)
 {
   char data_u, data_l;
@@ -19,6 +21,8 @@ void lcd_send_cmd (char cmd)
 	HAL_I2C_Master_Transmit (&hi2c3, SLAVE_ADDRESS_LCD,(uint8_t *) data_t, 4, 100);
 }
 
+
+//RS"1" - Data mode
 void lcd_send_data (char data)
 {
 	char data_u, data_l;
@@ -57,13 +61,14 @@ void lcd_init (void)
   // dislay initialisation
 	lcd_send_cmd (0x28); // Function set --> DL=0 (4 bit mode), N = 1 (2 line display) F = 0 (5x8 characters)
 	HAL_Delay(1);
-	lcd_send_cmd (0x08); //Display on/off control --> D=0,C=0, B=0  ---> display off
+//	lcd_send_cmd (0x08); //Display on/off control --> D=0,C=0, B=0  ---> display off
 	HAL_Delay(1);
 	lcd_send_cmd (0x01);  // clear display
 	HAL_Delay(1);
 	lcd_send_cmd (0x06); //Entry mode set --> I/D = 1 (increment cursor) & S = 0 (no shift)
 	HAL_Delay(1);
 	lcd_send_cmd (0x0C); //Display on/off control --> D = 1, C and B = 0. (Cursor and blink, last two bits)
+
 }
 
 void lcd_send_string (char *str)
