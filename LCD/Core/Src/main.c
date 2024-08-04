@@ -100,7 +100,18 @@ int main(void)
 
   lcd_init();
 
-  lcd_send_string("Hello World");
+
+  lcd_send_cmd (0x80|0x00);
+  lcd_send_string("HELLO WORLD");
+
+  lcd_send_cmd (0x80|0x40);
+  lcd_send_string("LCD 20x4 DEMO");
+
+  lcd_send_cmd (0x80|0x1C);
+  lcd_send_string("BY");
+
+  lcd_send_cmd (0x80|0x54);
+  lcd_send_string("ControllersTech");
 
 
 
